@@ -1,0 +1,14 @@
+{
+  "name": "Красные линии — архив первоисточников 2007–2024",
+  "short_name": "Красные линии",
+  "description": "Речи, лекции и интервью, без которых нельзя понять истоки нынешнего противостояния.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#151311",
+  "theme_color": "#151311",
+  "icons": [
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
