@@ -17,8 +17,9 @@ export function SiteHeader() {
         <div className="gold-rule mx-auto mt-6 max-w-md" />
         <nav
           aria-label="Основная навигация"
-          className="-mx-5 mt-2 flex gap-6 overflow-x-auto px-5 sm:mx-0 sm:justify-center sm:gap-9 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="mt-2 flex flex-wrap justify-center gap-x-6 gap-y-2 sm:gap-x-9"
         >
+
           <Link to="/" className="nav-link" activeOptions={{ exact: true }}>
             Главная
           </Link>
