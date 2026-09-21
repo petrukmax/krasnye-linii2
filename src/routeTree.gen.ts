@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ZerkalaRouteImport } from './routes/zerkala'
+import { Route as BlokBlockIdRouteImport } from './routes/blok.$blockId'
+import { Route as MaterialSlugRouteImport } from './routes/material.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZerkalaRoute = ZerkalaRouteImport.update({
+  id: '/zerkala',
+  path: '/zerkala',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlokBlockIdRoute = BlokBlockIdRouteImport.update({
+  id: '/blok/$blockId',
+  path: '/blok/$blockId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MaterialSlugRoute = MaterialSlugRouteImport.update({
+  id: '/material/$slug',
+  path: '/material/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/zerkala': typeof ZerkalaRoute
+  '/blok/$blockId': typeof BlokBlockIdRoute
+  '/material/$slug': typeof MaterialSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/zerkala': typeof ZerkalaRoute
+  '/blok/$blockId': typeof BlokBlockIdRoute
+  '/material/$slug': typeof MaterialSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/zerkala': typeof ZerkalaRoute
+  '/blok/$blockId': typeof BlokBlockIdRoute
+  '/material/$slug': typeof MaterialSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/zerkala' | '/blok/$blockId' | '/material/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/zerkala' | '/blok/$blockId' | '/material/$slug'
+  id: '__root__' | '/' | '/zerkala' | '/blok/$blockId' | '/material/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ZerkalaRoute: typeof ZerkalaRoute
+  BlokBlockIdRoute: typeof BlokBlockIdRoute
+  MaterialSlugRoute: typeof MaterialSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zerkala': {
+      id: '/zerkala'
+      path: '/zerkala'
+      fullPath: '/zerkala'
+      preLoaderRoute: typeof ZerkalaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blok/$blockId': {
+      id: '/blok/$blockId'
+      path: '/blok/$blockId'
+      fullPath: '/blok/$blockId'
+      preLoaderRoute: typeof BlokBlockIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/material/$slug': {
+      id: '/material/$slug'
+      path: '/material/$slug'
+      fullPath: '/material/$slug'
+      preLoaderRoute: typeof MaterialSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ZerkalaRoute: ZerkalaRoute,
+  BlokBlockIdRoute: BlokBlockIdRoute,
+  MaterialSlugRoute: MaterialSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
